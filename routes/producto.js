@@ -17,29 +17,25 @@ router.route('/')
     .post(async function (req, res) {
         let newProduct = req.body;
         // Validar si vienen las propiedades
-        if(!newProduct.correo || !newProduct.nombre || !newProduct.fecha || !newProduct.password || !newProduct.reportado || !newProduct.seguidores || !newProduct.siguiendo || !newProduct.admin || !newProduct.moderador) {
+        if(!newProduct.nombre || !newProduct.precio || !newProduct.marca || !newProduct.size || !newProduct.detalles || !newProduct.fecha || !newProduct.img) {
             res.statusCode = 400;
-            res.send('Las propiedades requeridas son: correo, nombre, fecha, password, reportado, seguidores, siguiendo, admin y moderador.');
+            res.send('Las propiedades requeridas son: Nombre del producto, precio, marca, tamaño, detalles, fecha y el link a la imagen');
         }
         else {
-            // Validar si existe un usuario con el mismo correo o nombres y apellidos
-            let sameEmailUser = await Users.find({correo: newProduct.correo}); //con await, el codigo se espera hasta que sameEmailUser reciba la respuesta
-            let sameNameUser = await Users.find({nombre: newProduct.nombre});
+            // Validar si existe un producto con el mismo nombre
+             //con await, el codigo se espera hasta que reciba la respuesta
+            let sameNameProduct = await Product.find({nombre: newProduct.nombre});
 
-            if(sameEmailUser.length > 0) {
+           if(sameNameProduct.length > 0) {
                 res.statusCode = 400;
-                res.send('Ya existe un usuario con el mismo correo');
-            }
-            else if(sameNameUser.length > 0) {
-                res.statusCode = 400;
-                res.send('Ya existe un usuario con el mismo nombre');
+                res.send('Ya existe un producto con el mismo nombre');
             }
             else {
-                let userDocument = Usuario(newProduct); //utilizamos el modelo para crear un documento con el nuevo usuario
-                userDocument.save() //se guarda en la base de datos
-                    .then(user => {
+                let productDocument = Producto(newProduct); //utilizamos el modelo para crear un documento con el nuevo producto
+                productDocument.save() //se guarda en la base de datos
+                    .then(product => {
                         res.statusCode = 201;
-                        res.send(user);
+                        res.send(product);
                     })
                     .catch(reason => {
                         res.statusCode = 500;
