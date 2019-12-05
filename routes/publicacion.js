@@ -34,6 +34,48 @@ router.route('/')
                     res.end();
                 });
             }
+        })
+        .put(async function (req, res) {
+            let putPost = req.body;
+            Posts.findOneAndReplace({
+                    id: putPost.id
+                }, putPost)
+                .then(user => {
+                    res.statusCode = 200;
+                    res.send(user);
+                })
+                .catch(reason => {
+                    res.statusCode = 404;
+                    res.end();
+                })
+        })
+        .patch(async function (req, res) {
+            let patchPost = req.body;
+            Posts.findOneAndUpdate({
+                    id: putPost.id
+                }, patchPost)
+                .then(post => {
+                    res.statusCode = 200;
+                    res.send(post);
+                })
+                .catch(reason => {
+                    res.statusCode = 404;
+                    res.end();
+                })
+        })
+        .delete(async function (req, res) {
+            let delPost = req.body;
+            Posts.findOneAndDelete({
+                    id: putPost.id
+                })
+                .then(post => {
+                    res.statusCode = 200;
+                    res.send(post);
+                })
+                .catch(reason => {
+                    res.statusCode = 404;
+                    res.end();
+                })
         });
 
 module.exports = router;

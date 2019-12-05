@@ -48,6 +48,48 @@ router.route('/')
                     });
             }
         }
+    })
+    .put(async function (req, res) {
+        let putUser = req.body;
+        Users.findOneAndReplace({
+                email: putUser.email
+            }, putUser)
+            .then(user => {
+                res.statusCode = 200;
+                res.send(user);
+            })
+            .catch(reason => {
+                res.statusCode = 404;
+                res.end();
+            })
+    })
+    .patch(async function (req, res) {
+        let patchUser = req.body;
+        Users.findOneAndUpdate({
+                email: patchUser.email
+            }, patchUser)
+            .then(user => {
+                res.statusCode = 200;
+                res.send(user);
+            })
+            .catch(reason => {
+                res.statusCode = 404;
+                res.end();
+            })
+    })
+    .delete(async function (req, res) {
+        let delUser = req.body;
+        Users.findOneAndDelete({
+                email: delUser.email
+            })
+            .then(user => {
+                res.statusCode = 200;
+                res.send(user);
+            })
+            .catch(reason => {
+                res.statusCode = 404;
+                res.end();
+            })
     });
 
 module.exports = router;

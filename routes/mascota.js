@@ -32,7 +32,48 @@ router.route('/')
                         res.end();
                     });
             }
-        }
-    });
+        })
+        .put(async function (req, res) {
+            let putMascota = req.body;
+            Mascota.findOneAndReplace({
+                    id: putMascota.id
+                }, putMascota)
+                .then(mascota => {
+                    res.statusCode = 200;
+                    res.send(mascota);
+                })
+                .catch(reason => {
+                    res.statusCode = 404;
+                    res.end();
+                })
+        })
+        .patch(async function (req, res) {
+            let patchMascota = req.body;
+            Mascota.findOneAndUpdate({
+                    id: putMascota.id
+                }, patchMascota)
+                .then(mascota => {
+                    res.statusCode = 200;
+                    res.send(mascota);
+                })
+                .catch(reason => {
+                    res.statusCode = 404;
+                    res.end();
+                })
+        })
+        .delete(async function (req, res) {
+            let delMascota = req.body;
+            Mascota.findOneAndDelete({
+                    id: putMascota.id
+                })
+                .then(mascota => {
+                    res.statusCode = 200;
+                    res.send(mascota);
+                })
+                .catch(reason => {
+                    res.statusCode = 404;
+                    res.end();
+                })
+        });
 
 module.exports = router;
