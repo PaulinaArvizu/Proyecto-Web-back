@@ -7,12 +7,13 @@ let pedidoSchema = mongoose.Schema({
         required: true
     },
     productos: [
-        id: {type: String},
-        Nombre: {type: String},
-        img: {type: String},
-        cantidad: {type: Number},
-        precio: {type: Number}
-
+        {
+            id: {type: String},
+            nombre: {type: String},
+            img: {type: String},
+            cantidad: {type: Number},
+            precio: {type: Number}
+        }
     ],
     subtotal: {
         type: Number,
