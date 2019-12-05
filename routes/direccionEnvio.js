@@ -51,7 +51,7 @@ router.route('/')
     .put(async function (req, res) {
         let putDirEnvio = req.body;
         dEnvio.findOneAndReplace({
-                email: putDirEnvio.email
+                id: putDirEnvio.id
             }, putDirEnvio)
             .then(dEnvio => {
                 res.statusCode = 200;
@@ -65,7 +65,7 @@ router.route('/')
     .patch(async function (req, res) {
         let patchDirEnvio = req.body;
         dEnvio.findOneAndUpdate({
-                email: patchDirEnvio.email
+                id: putDirEnvio.id
             }, patchDirEnvio)
             .then(dEnvio => {
                 res.statusCode = 200;
@@ -79,7 +79,7 @@ router.route('/')
     .delete(async function (req, res) {
         let delDirEnvio = req.body;
         dEnvio.findOneAndDelete({
-                email: delDirEnvio.email
+                id: putDirEnvio.id
             })
             .then(dEnvio => {
                 res.statusCode = 200;
