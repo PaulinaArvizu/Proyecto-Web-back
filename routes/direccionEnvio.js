@@ -17,7 +17,7 @@ router.route('/')
     .post(async function (req, res) {
         let newDEnvio = req.body;
         // Validar si vienen las propiedades
-        if(!newUser.correo || !newUser.nombre || !newUser.fecha || !newUser.password || !newUser.reportado || !newUser.seguidores || !newUser.siguiendo || !newUser.admin || !newUser.moderador) {
+        if(!newDEnvio.correo || !newDEnvio.nombre || !newDEnvio.fecha || !newDEnvio.password || !newDEnvio.reportado || !newDEnvio.seguidores || !newDEnvio.siguiendo || !newDEnvio.admin || !newDEnvio.moderador) {
             res.statusCode = 400;
             res.send('Las propiedades requeridas son: correo, nombre, fecha, password, reportado, seguidores, siguiendo, admin y moderador.');
         }
@@ -47,6 +47,48 @@ router.route('/')
                     });
             }
         }
+    })
+    .put(async function (req, res) {
+        let putDirEnvio = req.body;
+        dEnvio.findOneAndReplace({
+                email: putDirEnvio.email
+            }, putDirEnvio)
+            .then(dEnvio => {
+                res.statusCode = 200;
+                res.send(dEnvio);
+            })
+            .catch(reason => {
+                res.statusCode = 404;
+                res.end();
+            })
+    })
+    .patch(async function (req, res) {
+        let patchDirEnvio = req.body;
+        dEnvio.findOneAndUpdate({
+                email: patchDirEnvio.email
+            }, patchDirEnvio)
+            .then(dEnvio => {
+                res.statusCode = 200;
+                res.send(dEnvio);
+            })
+            .catch(reason => {
+                res.statusCode = 404;
+                res.end();
+            })
+    })
+    .delete(async function (req, res) {
+        let delDirEnvio = req.body;
+        dEnvio.findOneAndDelete({
+                email: delDirEnvio.email
+            })
+            .then(dEnvio => {
+                res.statusCode = 200;
+                res.send(dEnvio);
+            })
+            .catch(reason => {
+                res.statusCode = 404;
+                res.end();
+            })
     });
 
 module.exports = router;
