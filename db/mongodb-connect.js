@@ -16,4 +16,6 @@ mongoose.connect(URI, {
     console.log("Not connected to database", err);
 });
 
+mongoose.set('useFindAndModify', false);
+
 module.exports = mongoose;
