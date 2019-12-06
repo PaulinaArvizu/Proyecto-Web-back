@@ -1,17 +1,20 @@
 const express = require('express');
 const randomize = require('randomatic');
-const port = 3000;
+const port = process.env.PORT || 3000;
+const cors = require('cors');
 const app = express();
-const usersRouter = require('./routes/users');
-const productsRouter = require('./routes/products');
-const User = require('./db/users');
+const usersRouter = require('./routes/usuario');
+const productsRouter = require('./routes/producto');
+const User = require('./db/usuario');
 const Token = require('./db/token');
 
+let corsConfig = { origin: '*'};
+
+app.use(cors(corsConfig));
 app.use(express.json()); //middleware
 app.use('/api/users', usersRouter); //las rutas en userRouter se pueden accesar a traves de /api/users
 app.use('/api/products', authMiddleware);
 app.use('/api/products', productsRouter);
-
 
 app.post('/api/login', function (req, res) {
     // Programar aquí lógica de token
