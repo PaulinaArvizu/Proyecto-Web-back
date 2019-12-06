@@ -38,14 +38,15 @@ let usuarioSchema = mongoose.Schema({
     img: {
         type: String
     }
-});
+},
+{collection: 'Usuarios'});
+
+let Usuario = mongoose.model('Usuarios', usuarioSchema);
 
 usuarioSchema.statics.addUsuario = function(usuario) {
     console.log(usuario);
     let newUsuario = Usuario(usuario);
     return newUsuario.save();
 }
-
-let Usuario = mongoose.model('usuario', usuarioSchema);
 
 module.exports = Usuario;
