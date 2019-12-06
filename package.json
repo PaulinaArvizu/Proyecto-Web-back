@@ -1,0 +1,28 @@
+{
+  "name": "back-end",
+  "version": "1.0.0",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongoose": "^5.7.13",
+    "nodemon": "^2.0.1",
+    "randomatic": "^3.1.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PaulinaArvizu/Proyecto-Web-back.git"
+  },
+  "bugs": {
+    "url": "https://github.com/PaulinaArvizu/Proyecto-Web-back/issues"
+  },
+  "homepage": "https://github.com/PaulinaArvizu/Proyecto-Web-back#readme",
+  "description": ""
+}
