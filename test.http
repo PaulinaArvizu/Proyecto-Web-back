@@ -1,1 +1,10 @@
 GET https://proyecto-web-rakunians-back.herokuapp.com/api/users/
+ 
+###
+POST https://proyecto-web-rakunians-back.herokuapp.com/api/login/
+Content-Type: application/json
+
+{
+	"correo":"a@a.a",
+	"password":"jsona"
+}

@@ -6,7 +6,7 @@ const app = express();
 const usersRouter = require('./routes/usuario');
 const productsRouter = require('./routes/producto');
 const User = require('./db/usuario');
-// const Token = require('./db/token');
+const Token = require('./db/token');
 
 let corsConfig = { origin: '*'};
 
