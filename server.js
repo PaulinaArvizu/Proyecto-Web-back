@@ -3,6 +3,7 @@ const randomize = require('randomatic');
 const port = process.env.PORT || 3000;
 const cors = require('cors');
 const app = express();
+
 const usersRouter = require('./routes/usuario');
 const productsRouter = require('./routes/producto');
 const direccionEnvioRouter = require('./routes/direccionEnvio');
@@ -10,6 +11,7 @@ const mascotaRouter = require('./routes/mascota');
 const metodoPagoRouter = require('./routes/metodoPago');
 const pedidoRouter = require('./routes/pedido');
 const publicacionRouter = require('./routes/publicacion');
+
 const User = require('./db/usuario');
 const Token = require('./db/token');
 
