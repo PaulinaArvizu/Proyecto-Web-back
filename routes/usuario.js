@@ -17,7 +17,7 @@ router.route('/')
     .post(async function (req, res) {
         let newUser = req.body;
         // Validar si vienen las propiedades
-        if(!newUser.correo || !newUser.nombre || !newUser.fecha || !newUser.password || !newUser.reportado || !newUser.seguidores || !newUser.siguiendo || !newUser.admin || !newUser.moderador) {
+        if(!newUser.correo || !newUser.nombre || !newUser.fecha || !newUser.password || newUser.reportado == undefined || !newUser.seguidores || !newUser.siguiendo || newUser.admin == undefined || newUser.moderador == undefined) {
             res.statusCode = 400;
             res.send('Las propiedades requeridas son: correo, nombre, fecha, password, reportado, seguidores, siguiendo, admin y moderador.');
         }
@@ -36,7 +36,7 @@ router.route('/')
                 res.send('Ya existe un usuario con el mismo nombre');
             }
             else {
-                let userDocument = Usuario(newUser); //utilizamos el modelo para crear un documento con el nuevo usuario
+                let userDocument = Users(newUser); //utilizamos el modelo para crear un documento con el nuevo usuario
                 userDocument.save() //se guarda en la base de datos
                     .then(user => {
                         res.statusCode = 201;
