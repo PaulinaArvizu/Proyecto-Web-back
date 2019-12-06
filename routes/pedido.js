@@ -43,6 +43,48 @@ router.route('/')
                     });
             }
         }
-    });
+    })
+    .put(async function (req, res) {
+        let putPedido = req.body;
+        Pedido.findOneAndReplace({
+                id: putPedido.id
+            }, putPedido)
+            .then(pedido => {
+                res.statusCode = 200;
+                res.send(pedido);
+            })
+            .catch(reason => {
+                res.statusCode = 404;
+                res.end();
+            })
+    })
+    .patch(async function (req, res) {
+        let patchPedido = req.body;
+        Pedido.findOneAndUpdate({
+                id: patchPedido.id
+            }, patchPedido)
+            .then(pedido => {
+                res.statusCode = 200;
+                res.send(pedido);
+            })
+            .catch(reason => {
+                res.statusCode = 404;
+                res.end();
+            })
+    })
+    .delete(async function (req, res) {
+        let delPedido = req.body;
+        Pedido.findOneAndDelete({
+                id: delPedido.id
+            })
+            .then(pedido => {
+                res.statusCode = 200;
+                res.send(pedido);
+            })
+            .catch(reason => {
+                res.statusCode = 404;
+                res.end();
+            })
+    });;
 
 module.exports = router;

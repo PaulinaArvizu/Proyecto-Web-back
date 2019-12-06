@@ -43,6 +43,48 @@ router.route('/')
                     });
             }
         }
-    });
+    })
+    .put(async function (req, res) {
+        let putMPago = req.body;
+        Users.findOneAndReplace({
+                id: putMPago.email
+            }, putMPago)
+            .then(mPago => {
+                res.statusCode = 200;
+                res.send(mPago);
+            })
+            .catch(reason => {
+                res.statusCode = 404;
+                res.end();
+            })
+    })
+    .patch(async function (req, res) {
+        let patchMPago = req.body;
+        Users.findOneAndUpdate({
+                id: patchMPago.id
+            }, patchMPago)
+            .then(mPago => {
+                res.statusCode = 200;
+                res.send(mPago);
+            })
+            .catch(reason => {
+                res.statusCode = 404;
+                res.end();
+            })
+    })
+    .delete(async function (req, res) {
+        let delMPago = req.body;
+        Users.findOneAndDelete({
+                id: delMPago.id
+            })
+            .then(mPago => {
+                res.statusCode = 200;
+                res.send(mPago);
+            })
+            .catch(reason => {
+                res.statusCode = 404;
+                res.end();
+            })
+    });;
 
 module.exports = router;
