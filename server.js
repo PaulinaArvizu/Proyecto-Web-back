@@ -53,7 +53,7 @@ app.listen(port, () => {
 async function authMiddleware(req, res, next) { //autentica los usuarios
     if(!req.headers['x-auth-user']) { //pregunta por la existencia de este header
         res.statusCode = 401;
-        res.end();
+        res.send(req.headers);
     }
     else {
         // Validar que el token sea válido

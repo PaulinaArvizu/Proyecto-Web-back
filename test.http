@@ -1,7 +1,8 @@
-GET https://proyecto-web-rakunians-back.herokuapp.com/api/users/
+GET https://proyecto-web-rakunians-back.herokuapp.com/api/products/
+x-auth-user: "OvnhNftaAz-5de9ad1e13b9a55018f6e573"
  
 ###
-POST https://proyecto-web-rakunians-back.herokuapp.com/api/login/
+POST https://proyecto-web-rakunians-back.herokuapp.com/api/login
 Content-Type: application/json
 
 {
