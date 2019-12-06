@@ -34,7 +34,8 @@ let direccionSchema = mongoose.Schema({
         minlength: 10,
         maxlength: 10
     }
-});
+},
+{collection: 'DireccionesDeEnvio'});
 
 direccionSchema.statics.addDireccion = function(direccion) {
     console.log(direccion);
