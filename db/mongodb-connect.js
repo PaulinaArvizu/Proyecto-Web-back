@@ -5,7 +5,7 @@ console.log(config.dbuser);
 console.log(config.dbpsw);
 console.log(encodeURIComponent(config.dbpsw));
 
-let URI = `mongodb+srv://parvizu:${encodeURIComponent('jTB!pBa6QA!8qa!')}@rakunianscluster-jc7gh.mongodb.net/TestSwaj?retryWrites=true&w=majority`;
+let URI = `mongodb+srv://parvizu:${encodeURIComponent('jTB!pBa6QA!8qa!')}@rakunianscluster-jc7gh.mongodb.net/RakuniansDB?retryWrites=true&w=majority`;
 console.log(URI);
 mongoose.connect(URI, {
     useNewUrlParser: true,
