@@ -20,31 +20,31 @@ app.post('/api/login', function (req, res) {
     res.send("hola crayola");
 });
 
-// app.post('/api/login', function (req, res) {
-//     // Programar aquí lógica de token
-//     User.find({correo: req.body.correo, password: req.body.password})
-//         .then(async users => {
-//             //aqui se genera el token
-//             if(users.length > 0) { //confirmar que regrese un usuario con esa combinacion de correo-password
-//                 let user = users[0];
-//                 let tokenString = randomize('Aa0','10')+'-'+user.id;
+app.post('/api/login', function (req, res) {
+    // Programar aquí lógica de token
+    User.find({correo: req.body.correo, password: req.body.password})
+        .then(async users => {
+            //aqui se genera el token
+            if(users.length > 0) { //confirmar que regrese un usuario con esa combinacion de correo-password
+                let user = users[0];
+                let tokenString = randomize('Aa0','10')+'-'+user.id;
 
-//                 await Token.findOneAndDelete({userId: user.id});
-//                 let tokenDoc = Token({userId: user.id, token: tokenString});
-//                 await tokenDoc.save();
+                await Token.findOneAndDelete({userId: user.id});
+                let tokenDoc = Token({userId: user.id, token: tokenString});
+                await tokenDoc.save();
 
-//                 res.statusCode = 200;
-//                 res.send({token: tokenString});
-//             } else { //el usuario ingreso mal alguno de los campos
-//                 res.statusCode = 400;
-//                 res.end();
-//             }
-//         })
-//         .catch(reason => {
-//             res.statusCode = 500;
-//             res.end();
-//         });
-// });
+                res.statusCode = 200;
+                res.send({token: tokenString});
+            } else { //el usuario ingreso mal alguno de los campos
+                res.statusCode = 400;
+                res.end();
+            }
+        })
+        .catch(reason => {
+            res.statusCode = 500;
+            res.end();
+        });
+});
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
