@@ -1,6 +1,11 @@
 const mongoose = require('./mongodb-connect') //importa el archivo
 
 let metodoPagoSchema = mongoose.Schema({
+    idU: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'usuario',
+        required: true
+    },
     tarjeta: {
         type: String,
         required: true

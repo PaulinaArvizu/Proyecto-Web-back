@@ -1,6 +1,11 @@
 const mongoose = require('./mongodb-connect') //importa el archivo
 
 let mascotaSchema = mongoose.Schema({
+    idU: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'usuario',
+        required: true
+    },
     nombre: {
         type: String,
         required: true

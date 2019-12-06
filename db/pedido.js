@@ -2,13 +2,13 @@ const mongoose = require('./mongodb-connect') //importa el archivo
 
 let pedidoSchema = mongoose.Schema({
     idU: {
-        type: Schema.types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'usuario',
         required: true
     },
     productos: [
         {
-            id: {type: String},
+            id: {type: mongoose.Schema.Types.ObjectId},
             nombre: {type: String},
             img: {type: String},
             cantidad: {type: Number},

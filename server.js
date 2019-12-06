@@ -5,6 +5,11 @@ const cors = require('cors');
 const app = express();
 const usersRouter = require('./routes/usuario');
 const productsRouter = require('./routes/producto');
+const direccionEnvioRouter = require('./routes/direccionEnvio');
+const mascotaRouter = require('./routes/mascota');
+const metodoPagoRouter = require('./routes/metodoPago');
+const pedidoRouter = require('./routes/pedido');
+const publicacionRouter = require('./routes/publicacion');
 const User = require('./db/usuario');
 const Token = require('./db/token');
 
@@ -15,6 +20,22 @@ app.use(express.json()); //middleware
 app.use('/api/users', usersRouter); //las rutas en userRouter se pueden accesar a traves de /api/users
 app.use('/api/products', authMiddleware);
 app.use('/api/products', productsRouter);
+
+app.use('/api/direccionEnvio', authMiddleware);
+app.use('/api/direccionEnvio', direccionEnvioRouter);
+
+app.use('/api/mascota', authMiddleware);
+app.use('/api/mascota', mascotaRouter);
+
+app.use('/api/metodoPago', authMiddleware);
+app.use('/api/metodoPago', metodoPagoRouter);
+
+app.use('/api/pedido', authMiddleware);
+app.use('/api/pedido', pedidoRouter);
+
+app.use('/api/publicacion', authMiddleware);
+app.use('/api/publicacion', publicacionRouter);
+
 
 // app.post('/api/login', function (req, res) {
 //     res.send("hola crayola");
