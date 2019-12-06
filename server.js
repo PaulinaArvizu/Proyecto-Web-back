@@ -6,7 +6,7 @@ const app = express();
 const usersRouter = require('./routes/usuario');
 const productsRouter = require('./routes/producto');
 const User = require('./db/usuario');
-const Token = require('./db/token');
+// const Token = require('./db/token');
 
 let corsConfig = { origin: '*'};
 
@@ -17,30 +17,34 @@ app.use('/api/products', authMiddleware);
 app.use('/api/products', productsRouter);
 
 app.post('/api/login', function (req, res) {
-    // Programar aquí lógica de token
-    User.find({correo: req.body.correo, password: req.body.password})
-        .then(async users => {
-            //aqui se genera el token
-            if(users.length > 0) { //confirmar que regrese un usuario con esa combinacion de correo-password
-                let user = users[0];
-                let tokenString = randomize('Aa0','10')+'-'+user.id;
-
-                await Token.findOneAndDelete({userId: user.id});
-                let tokenDoc = Token({userId: user.id, token: tokenString});
-                await tokenDoc.save();
-
-                res.statusCode = 200;
-                res.send({token: tokenString});
-            } else { //el usuario ingreso mal alguno de los campos
-                res.statusCode = 400;
-                res.end();
-            }
-        })
-        .catch(reason => {
-            res.statusCode = 500;
-            res.end();
-        });
+    res.send("hola crayola");
 });
+
+// app.post('/api/login', function (req, res) {
+//     // Programar aquí lógica de token
+//     User.find({correo: req.body.correo, password: req.body.password})
+//         .then(async users => {
+//             //aqui se genera el token
+//             if(users.length > 0) { //confirmar que regrese un usuario con esa combinacion de correo-password
+//                 let user = users[0];
+//                 let tokenString = randomize('Aa0','10')+'-'+user.id;
+
+//                 await Token.findOneAndDelete({userId: user.id});
+//                 let tokenDoc = Token({userId: user.id, token: tokenString});
+//                 await tokenDoc.save();
+
+//                 res.statusCode = 200;
+//                 res.send({token: tokenString});
+//             } else { //el usuario ingreso mal alguno de los campos
+//                 res.statusCode = 400;
+//                 res.end();
+//             }
+//         })
+//         .catch(reason => {
+//             res.statusCode = 500;
+//             res.end();
+//         });
+// });
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);
