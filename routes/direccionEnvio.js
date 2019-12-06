@@ -17,9 +17,9 @@ router.route('/')
     .post(async function (req, res) {
         let newDEnvio = req.body;
         // Validar si vienen las propiedades
-        if(!newDEnvio.correo || !newDEnvio.nombre || !newDEnvio.fecha || !newDEnvio.password || !newDEnvio.reportado || !newDEnvio.seguidores || !newDEnvio.siguiendo || !newDEnvio.admin || !newDEnvio.moderador) {
+        if(!newDEnvio.nombreCompleto || !newDEnvio.direccion || !newDEnvio.subDireccion || !newDEnvio.ciudad || !newDEnvio.estado || !newDEnvio.CP || !newDEnvio.telefono) {
             res.statusCode = 400;
-            res.send('Las propiedades requeridas son: correo, nombre, fecha, password, reportado, seguidores, siguiendo, admin y moderador.');
+            res.send('Las propiedades requeridas son: Nombre completo del comprador, direccion, subdireccion, ciudad, estado, Codigo postal, telefono');
         }
         else {
             // Validar si existe un usuario con el mismo correo o nombre
