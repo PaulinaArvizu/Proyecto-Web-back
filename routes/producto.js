@@ -43,6 +43,48 @@ router.route('/')
                     });
             }
         }
-    });
+    })
+    .put(async function (req, res) {
+        let putProduct = req.body;
+        Product.findOneAndReplace({
+                id: putProduct.id
+            }, putProduct)
+            .then(product => {
+                res.statusCode = 200;
+                res.send(product);
+            })
+            .catch(reason => {
+                res.statusCode = 404;
+                res.end();
+            })
+    })
+    .patch(async function (req, res) {
+        let patchProducto = req.body;
+        Product.findOneAndUpdate({
+                id: patchProducto.email
+            }, patchProducto)
+            .then(product => {
+                res.statusCode = 200;
+                res.send(product);
+            })
+            .catch(reason => {
+                res.statusCode = 404;
+                res.end();
+            })
+    })
+    .delete(async function (req, res) {
+        let delProducto = req.body;
+        Product.findOneAndDelete({
+                id: delProducto.id
+            })
+            .then(product => {
+                res.statusCode = 200;
+                res.send(product);
+            })
+            .catch(reason => {
+                res.statusCode = 404;
+                res.end();
+            })
+    });;
 
 module.exports = router;
