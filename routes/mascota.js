@@ -67,7 +67,7 @@ router.route('/')
         .delete(async function (req, res) {
             let delMascota = req.body;
             Mascota.findOneAndDelete({
-                    _id: putMascota._id
+                    _id: delMascota._id
                 })
                 .then(mascota => {
                     res.statusCode = 200;

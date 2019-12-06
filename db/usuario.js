@@ -22,10 +22,10 @@ let usuarioSchema = mongoose.Schema({
         required: true
     },
     seguidores: {
-        type: [String]
+        type: [mongoose.Schema.Types.ObjectId]
     },
     siguiendo: {
-        type: [String]
+        type: [mongoose.Schema.Types.ObjectId]
     },
     admin: {
         type: Boolean,
