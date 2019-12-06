@@ -16,9 +16,9 @@ app.use('/api/users', usersRouter); //las rutas en userRouter se pueden accesar 
 app.use('/api/products', authMiddleware);
 app.use('/api/products', productsRouter);
 
-app.post('/api/login', function (req, res) {
-    res.send("hola crayola");
-});
+// app.post('/api/login', function (req, res) {
+//     res.send("hola crayola");
+// });
 
 app.post('/api/login', function (req, res) {
     // Programar aquí lógica de token
