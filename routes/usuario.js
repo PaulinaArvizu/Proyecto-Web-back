@@ -52,7 +52,7 @@ router.route('/')
     .put(async function (req, res) {
         let putUser = req.body;
         Users.findOneAndReplace({
-                email: putUser.email
+                correo: putUser.correo
             }, putUser)
             .then(user => {
                 res.statusCode = 200;
@@ -66,7 +66,7 @@ router.route('/')
     .patch(async function (req, res) {
         let patchUser = req.body;
         Users.findOneAndUpdate({
-                email: patchUser.email
+                correo: patchUser.correo
             }, patchUser)
             .then(user => {
                 res.statusCode = 200;
@@ -80,7 +80,7 @@ router.route('/')
     .delete(async function (req, res) {
         let delUser = req.body;
         Users.findOneAndDelete({
-                email: delUser.email
+                correo: delUser.correo
             })
             .then(user => {
                 res.statusCode = 200;
