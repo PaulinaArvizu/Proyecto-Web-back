@@ -38,7 +38,7 @@ router.route('/')
         .put(async function (req, res) {
             let putPost = req.body;
             Posts.findOneAndReplace({
-                    id: putPost.id
+                    _id: putPost._id
                 }, putPost)
                 .then(user => {
                     res.statusCode = 200;
@@ -52,7 +52,7 @@ router.route('/')
         .patch(async function (req, res) {
             let patchPost = req.body;
             Posts.findOneAndUpdate({
-                    id: putPost.id
+                    _id: putPost._id
                 }, patchPost)
                 .then(post => {
                     res.statusCode = 200;
@@ -66,7 +66,7 @@ router.route('/')
         .delete(async function (req, res) {
             let delPost = req.body;
             Posts.findOneAndDelete({
-                    id: putPost.id
+                    _id: putPost._id
                 })
                 .then(post => {
                     res.statusCode = 200;

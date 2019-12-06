@@ -47,7 +47,7 @@ router.route('/')
     .put(async function (req, res) {
         let putProduct = req.body;
         Product.findOneAndReplace({
-                id: putProduct.id
+                _id: putProduct._id
             }, putProduct)
             .then(product => {
                 res.statusCode = 200;
@@ -61,7 +61,7 @@ router.route('/')
     .patch(async function (req, res) {
         let patchProducto = req.body;
         Product.findOneAndUpdate({
-                id: patchProducto.email
+                _id: patchProducto._id
             }, patchProducto)
             .then(product => {
                 res.statusCode = 200;
@@ -75,7 +75,7 @@ router.route('/')
     .delete(async function (req, res) {
         let delProducto = req.body;
         Product.findOneAndDelete({
-                id: delProducto.id
+                _id: delProducto._id
             })
             .then(product => {
                 res.statusCode = 200;

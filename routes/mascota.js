@@ -29,6 +29,7 @@ router.route('/')
                     })
                     .catch(reason => {
                         res.statusCode = 500;
+                        console.log(reason);
                         res.end();
                     });
             }
@@ -49,11 +50,13 @@ router.route('/')
         })
         .patch(async function (req, res) {
             let patchMascota = req.body;
+            console.log(patchMascota);
             Mascota.findOneAndUpdate({
-                    id: putMascota.id
+                    _id: patchMascota._id
                 }, patchMascota)
                 .then(mascota => {
                     res.statusCode = 200;
+                    console.log(mascota);
                     res.send(mascota);
                 })
                 .catch(reason => {
@@ -64,7 +67,7 @@ router.route('/')
         .delete(async function (req, res) {
             let delMascota = req.body;
             Mascota.findOneAndDelete({
-                    id: putMascota.id
+                    _id: putMascota._id
                 })
                 .then(mascota => {
                     res.statusCode = 200;

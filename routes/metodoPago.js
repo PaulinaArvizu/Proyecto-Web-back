@@ -47,7 +47,7 @@ router.route('/')
     .put(async function (req, res) {
         let putMPago = req.body;
         Users.findOneAndReplace({
-                id: putMPago.email
+                _id: putMPago._id
             }, putMPago)
             .then(mPago => {
                 res.statusCode = 200;
@@ -61,7 +61,7 @@ router.route('/')
     .patch(async function (req, res) {
         let patchMPago = req.body;
         Users.findOneAndUpdate({
-                id: patchMPago.id
+                _id: patchMPago._id
             }, patchMPago)
             .then(mPago => {
                 res.statusCode = 200;
@@ -75,7 +75,7 @@ router.route('/')
     .delete(async function (req, res) {
         let delMPago = req.body;
         Users.findOneAndDelete({
-                id: delMPago.id
+                _id: delMPago._id
             })
             .then(mPago => {
                 res.statusCode = 200;
