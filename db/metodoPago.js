@@ -35,7 +35,8 @@ let metodoPagoSchema = mongoose.Schema({
         type: [String], //arreglo de strings
         required: true
     }
-});
+},
+{collection: 'MetodosDePago'});
 
 metodoPagoSchema.statics.addMetodoPago = function(metodoPago) {
     console.log(metodoPago);

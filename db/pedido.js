@@ -28,7 +28,8 @@ let pedidoSchema = mongoose.Schema({
         enum: [1, 2, 3],
         required: true
     }
-});
+},
+{collection: 'Pedidos'});
 
 pedidoSchema.statics.addPedido = function(pedido) {
     console.log(pedido);

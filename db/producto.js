@@ -29,7 +29,8 @@ let productoSchema = mongoose.Schema({
         type: String,
         required: true
     }
-});
+},
+{collection: 'Productos'});
 
 productoSchema.statics.addProducto = function(producto) {
     console.log(producto);

@@ -30,7 +30,8 @@ let publicacionSchema = mongoose.Schema({
         type: String,
         required: true
     }
-});
+},
+{collection: 'Publicaciones'});
 
 publicacionSchema.statics.addPublicacion = function(publicacion) {
     console.log(user);

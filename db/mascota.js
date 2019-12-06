@@ -29,7 +29,8 @@ let mascotaSchema = mongoose.Schema({
         type: String,
         required: true
     }
-});
+},
+{collection: 'Mascotas'});
 
 mascotaSchema.statics.addPet = function(pet) {
     console.log(pet);
