@@ -13,9 +13,6 @@ let publicacionSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    reportado: {
-        type: Boolean
-    },
     fecha: {
         type: Date,
         required: true
