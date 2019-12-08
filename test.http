@@ -1,5 +1,9 @@
-GET http://localhost:3000/api/products/
-x-auth-user: Bd0gy9rb99-5de9ad1e13b9a55018f6e573
+GET https://proyecto-web-rakunians-back.herokuapp.com/api/users
+
+###
+
+GET http://localhost:3000/api/users
+#x-auth-user: 8ZQLSZV0Pp-5dea19fa174a6a0017dc4ffe
  
 ###
 POST https://proyecto-web-rakunians-back.herokuapp.com/api/login
@@ -7,5 +11,63 @@ Content-Type: application/json
 
 {
 	"correo":"a@a.a",
-	"password":"jsona"
+	"password":"a"
+}
+
+###
+POST https://proyecto-web-rakunians-back.herokuapp.com/api/users
+Content-Type: application/json
+
+{
+    "correo": "c@a.a",
+      "nombre": "DogNBeer",
+      "fecha": "2019-11-02",
+      "password": "a",
+      "reportado": false,
+      "seguidores": [],
+      "siguiendo": [
+        0
+      ],
+      "admin": false,
+      "moderador": false,
+      "img": "https://i.pinimg.com/originals/ea/0f/f3/ea0ff31e053a738277a1e9524726e4e7.jpg"
+    }
+
+###
+POST http://localhost:3000/api/mascota
+x-auth-user: YE1YcagfY8-5dea19fa174a6a0017dc4ffe
+Content-Type: application/json
+
+{
+    "idU": "5dea19fa174a6a0017dc4ffe",
+    "nombre": "figaro",
+      "fecha": "2000-05-01",
+      "tipo": "perro",
+      "raza": "ninguna",
+      "size": "Chico",
+      "descripcion": "holis",
+      "img": "123"
+}
+
+###
+PATCH http://localhost:3000/api/mascota
+x-auth-user: 8ZQLSZV0Pp-5dea19fa174a6a0017dc4ffe
+Content-Type: application/json
+
+{
+    "_id": "5dea221328fc8c52e8baa679",
+    "nombre": "figaru",
+    "tipo": "gatu",
+    "raza": "ninguna",
+    "size": "Chico",
+    "descripcion": "holis",
+    "img": "123"
+}
+###
+DELETE http://localhost:3000/api/mascota
+x-auth-user: 8ZQLSZV0Pp-5dea19fa174a6a0017dc4ffe
+Content-Type: application/json
+
+{
+    "_id": "5dec61d26145291d9422b76a"
 }
