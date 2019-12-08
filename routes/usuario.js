@@ -19,7 +19,7 @@ router.route('/')
         // Validar si vienen las propiedades
         if(!newUser.correo || !newUser.nombre || !newUser.fecha || !newUser.password || !newUser.seguidores || !newUser.siguiendo || newUser.admin == undefined) {
             res.statusCode = 400;
-            res.send('Las propiedades requeridas son: correo, nombre, fecha, password, reportado, seguidores, siguiendo, admin y moderador.');
+            res.send('Las propiedades requeridas son: correo, nombre, fecha, password, seguidores, siguiendo y admin.');
         }
         else {
             // Validar si existe un usuario con el mismo correo o nombre
