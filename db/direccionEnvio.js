@@ -1,6 +1,11 @@
 const mongoose = require('./mongodb-connect') //importa el archivo
 
 let direccionSchema = mongoose.Schema({
+    idU: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'usuario',
+        required: true
+    },
     nombreCompleto: {
         type: String,
         required: true
