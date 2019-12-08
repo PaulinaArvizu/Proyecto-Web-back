@@ -17,7 +17,7 @@ router.route('/')
     .post(async function (req, res) {
         let newUser = req.body;
         // Validar si vienen las propiedades
-        if(!newUser.correo || !newUser.nombre || !newUser.fecha || !newUser.password || newUser.reportado == undefined || !newUser.seguidores || !newUser.siguiendo || newUser.admin == undefined || newUser.moderador == undefined) {
+        if(!newUser.correo || !newUser.nombre || !newUser.fecha || !newUser.password || !newUser.seguidores || !newUser.siguiendo || newUser.admin == undefined) {
             res.statusCode = 400;
             res.send('Las propiedades requeridas son: correo, nombre, fecha, password, reportado, seguidores, siguiendo, admin y moderador.');
         }

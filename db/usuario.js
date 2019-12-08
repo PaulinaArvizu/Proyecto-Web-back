@@ -17,10 +17,6 @@ let usuarioSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    reportado: {
-        type: Boolean,
-        required: true
-    },
     seguidores: {
         type: [mongoose.Schema.Types.ObjectId]
     },
@@ -28,10 +24,6 @@ let usuarioSchema = mongoose.Schema({
         type: [mongoose.Schema.Types.ObjectId]
     },
     admin: {
-        type: Boolean,
-        required: true
-    },
-    moderador: {
         type: Boolean,
         required: true
     },
