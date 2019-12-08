@@ -13,10 +13,6 @@ let publicacionSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    mascotas: {
-        type: [String],
-        required: true
-    },
     reportado: {
         type: Boolean
     },
